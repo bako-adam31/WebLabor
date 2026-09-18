@@ -1,20 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
         <title>My Website</title>
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="components.css">
     </head>
     <body>
         <h1>Udvozollek a portofoliomba!</h1>
+        <header>
+            <nav>
+                <ul>
+                    <a href="aboutme.html">Rolam</a>
+                    <a href="skills.html">Kepessegek</a>
+                    <a href="projects.html">Projektek</a>
+                    <a href="#galery">Galeria</a>
+                    <a href="contact.html">Kapcsolat</a>
+                </ul>
+            </nav>
+        </header>
+        <button onclick="incrementCounter()">Noveles</button>
+        <p id="counter">0</p>
+
+        <script>
+            let count = 0;
+
+            function incrementCounter() {
+                count++;
+                document.getElementById('counter').innerText = count;
+            }
+        </script>
+        <button onclick="askName()">Kerdezd meg a nevet</button>
+        <p id="name"></p>
+
+        <script>
+            function askName() {
+                let name = prompt('Mi a neved?');
+                document.getElementById('name').innerText = 'Udvozollek, ' + name + '!';
+            }
+        </script>
+        <button onclick="startCountdown()">Indítsd el</button>
+        <p id="countdown">10</p>
+
+        <script>
+            function startCountdown() {
+                let timeLeft = 10;
+                let timer = setInterval(function() {
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        document.getElementById('countdown').innerText = 'Ido lejart!';
+                    } else {
+                        document.getElementById('countdown').innerText = timeLeft;
+                    }
+                    timeLeft--;
+                }, 1000);
+            }
+        </script>
+        <ul id="fruitList"></ul>
+
+        <script>
+            let fruits = ['Alma', 'Banan', 'Narancs'];
+            fruits.forEach(function(fruit) {
+                document.getElementById('fruitList').innerHTML += '<li>' + fruit + '</li>';
+            });
+        </script>
+
+        <ul id="personInfo"></ul>
+
+        <script>
+            let person = { name: 'Adam', age: 20, city: 'Targu Mures' };
+            for (let key in person) {
+                document.getElementById('personInfo').innerHTML +=
+                    '<li>' + key + ': ' + person[key] + '</li>';
+            }
+        </script>
+        <button onclick="changeBg()">Hatter valtas</button>
+
+        <script>
+            function changeBg() {
+                document.body.style.backgroundColor = 'lightcoral';
+            }
+        </script>
+        <script>
+            window.onload = function() {
+                setTimeout(function() {
+                    alert('Udvozollek az oldalon');
+                }, 5000);
+            }
+        </script>
     </body>
-    <header>
-        <nav>
-            <ul>
-                <a href="aboutme.html">Rolam</a>
-                <a href="skills.html">Kepessegek</a>
-                <a href="projects.html">Projektek</a>
-                <a href="#galery">Galeria</a>
-                <a href="contact.html">Kapcsolat</a>
-            </ul>
-        </nav>
-    </header>
 </html>
